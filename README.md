@@ -1,4 +1,4 @@
-# Node Reverse Proxy (port 7777)
+# Node Reverse Proxy
 
 A tiny Node.js reverse proxy that forwards **all** incoming HTTP requests to `TARGET`, preserving method, headers, body, and query. Supports WebSockets and streaming.
 
