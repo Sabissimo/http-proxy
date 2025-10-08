@@ -1,0 +1,25 @@
+{
+  "name": "node-proxy-7777",
+  "version": "1.0.0",
+  "description": "Minimal Node.js reverse proxy on port 7777 with dotenv.",
+  "main": "proxy-http-proxy.js",
+  "scripts": {
+    "start": "node proxy-http-proxy.js"
+  },
+  "keywords": [
+    "reverse-proxy",
+    "proxy",
+    "http-proxy",
+    "windows",
+    "nssm"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "http-proxy": "^1.18.1"
+  }
+}
