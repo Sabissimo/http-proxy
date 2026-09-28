@@ -24,6 +24,8 @@ const (
 	// polling and downloads are never held back).
 	flushImmediately = -1
 
+	// badGatewayBody is the plain-text answer to a failed upstream request,
+	// the same text the Node.js version sent.
 	badGatewayBody = "Bad gateway"
 )
 
