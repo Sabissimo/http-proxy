@@ -1,0 +1,30 @@
+# push to main -> tests, build, and the exe uploaded as the artifact "httpproxy".
+# ElvareConsole on the server picks the artifact up and deploys it; failing
+# tests are what stop a deploy.
+name: build
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '**.md'
+      - docs/**
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+      - run: go vet ./...
+      - run: go test ./...
+      - run: bash build.sh
+        shell: bash
+      - uses: actions/upload-artifact@v7
+        with:
+          name: httpproxy
+          path: httpproxy.exe
+          retention-days: 14
