@@ -59,12 +59,16 @@ or move the proxy's elsewhere (e.g. `HEALTH_PATH=/_proxy/healthz`).
 
 GitHub Actions (`.github/workflows/build.yml`) builds every push to `main` (Markdown and
 `docs/` excepted): `go vet`, `go test` and the exe on a GitHub Windows runner, uploaded as the
-artifact `httpproxy`. **ElvareConsole** (https://devops.elvare.ge) deploys it once the app is
-registered there (*Settings → Apps → Add app*):
+artifact `httpproxy`. **ElvareConsole** (https://devops.elvare.ge) deploys it — registered there
+under *Settings → Apps* with *Deploy automatically* on:
 
 | Name | Repository | Workflow | Branch | Artifact | Executable | Services |
 |---|---|---|---|---|---|---|
-| proxy | `Sabissimo/http-proxy` | `build.yml` | `main` | `httpproxy` | `httpproxy.exe` | the service name from section 2 |
+| DoctraAPI Proxy | `Sabissimo/http-proxy` | `build.yml` | `main` | `httpproxy` | `httpproxy.exe` | `Elvare DoctraAPI Proxy` (live) |
+
+On the server the service runs from `D:\Distribs\Services\http-proxy` on port 7777, logging to
+`D:\Distribs\Logs\http-proxy`. Every successful build of `main` goes straight to it (there is no
+test instance).
 
 The console stops the service, swaps `httpproxy.exe`, starts it, checks
 `http://localhost:<PORT>/healthz`, and puts the previous exe back if the new one does not come
